@@ -39,10 +39,12 @@ const App = ()=> {
       <input type="text" className="search-bar" 
       value = {search}
       onChange = {updateSearch}/>
-      <button type="submit" onClick = {getRecpies}>
+      <button type="submit" onClick = {getRecpies}
+      className="button">
         Search
         </button>
     </form>
+    <div>
     {recipes.map((recipe, index) => (
       <Recipes 
       key =  {index}
@@ -57,9 +59,12 @@ const App = ()=> {
       />
       
     ))}
-    
+   
+    </div>
+    </div>
 
-  </div>
+  
+
   
   );
 }

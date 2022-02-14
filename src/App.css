@@ -1,0 +1,30 @@
+.App {
+  margin: 50px auto;
+  max-width: 50%;
+  border: 2px ridge rgba(136, 93, 241, 0.1);
+  border-radius: 17px;
+  background-color: aquamarine;
+  padding: 50px;
+}
+
+li {
+  list-style: none;
+}
+.search-bar {
+  min-width: 50%;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  margin: 10px;
+}
+
+.button {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+}
+.button:hover {
+  box-shadow: 10px 10px 10px 10px rgba(136, 93, 241, 0.1);
+  cursor: pointer;
+}
