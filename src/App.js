@@ -1,51 +1,63 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect,useState} from 'react';
 import Recipes from './Recipes';
 
 
 const App = ()=> {
   const [recipes, setRecpies] =useState([]);
   const [search, setSearch] = useState("");
-  const [query, setQuery] = useState ("chicken");
+  const [query, setQuery]= useState("banana")
 
   const appId="4257774f";
   const appKey= "5943314524ba8ccc07fb748900635678";
   const apiUrl=`https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`;
   
 
-  useEffect(()=>{
-    getRecpies();
-  }, [query]);
+useEffect(()=>{
+  getRecpies()
+}, [query]
+)
 
- 
+
+
   const getRecpies =async ()=>{
     const response = await fetch(apiUrl);
     const data = await response.json();
-    setRecpies(data.hits)
-    console.log(data)
-   }
+    
+    if (data.more===false){
+      alert("Oops! Please try again!")
+    }else {
+      setRecpies(data.hits)
+      console.log(data)
+    }
+   
+   };
+    
+      
+   
    const updateSearch = e=>{
      setSearch(e.target.value);
-   }
-   const getSearch = e=>{
-     e.preventDefault();
-     setQuery(search);
-     setSearch("");
-   }
 
+   }
+   const handleSubmit = e=>{
+     e.preventDefault();
+    setQuery(search);
+   }
+   
   return (
   <div className='App'>
-    <form className="search-form" onSubmit={getSearch}>
+    <form className="search-form" onSubmit={handleSubmit}>
       <input type="text" className="search-bar" 
       value = {search}
       onChange = {updateSearch}/>
-      <button type="submit" onClick = {getRecpies}
+      <button type="submit" onClick={getRecpies}
       className="button">
         Search
         </button>
     </form>
-    <div>
+    
     {recipes.map((recipe, index) => (
+
       <Recipes 
       key =  {index}
       title = {recipe.recipe.label}
@@ -57,16 +69,17 @@ const App = ()=> {
       dishType = {recipe.recipe.dishType}
       source = {recipe.recipe.source}
       />
-      
+     
     ))}
    
     </div>
-    </div>
-
   
 
   
-  );
-}
+
+  
+  );}
+  
+
 
 export default App;

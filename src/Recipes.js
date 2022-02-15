@@ -5,6 +5,7 @@ const Recipes = ({title, calories, image, cuisineType, dishType, ingredients, li
 
     return(
         <div className="recipes">
+          
             <h1 className="title" >{title}</h1>
             <h2>{cuisineType}</h2>
             <h3>{dishType}</h3>
@@ -16,9 +17,9 @@ const Recipes = ({title, calories, image, cuisineType, dishType, ingredients, li
             </ul>
             <p>calories :{Math.round(calories)}</p>
             <img src = {image} alt=""/>
-         
+         </div>
 
-        </div>
+        
     )
 }
 export default Recipes;
