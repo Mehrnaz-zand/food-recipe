@@ -7,7 +7,7 @@ const Recipes = ({title, calories, image, cuisineType, dishType, ingredients, li
         <div className="recipes">
           
             <h2 className="title" >{title}</h2>
-            <a target="_blank" href={image} rel="noreferrer"><img src = {image} alt={title} title={title}/></a>
+            <a target="_blank" href={image} rel="noreferrer" ><img src = {image} alt={title} title={title}/></a>
             <hr/>
       
             <h5 className="text-capitalize">Cuisine type: {cuisineType}</h5>
