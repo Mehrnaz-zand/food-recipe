@@ -13,7 +13,7 @@ const App = ()=> {
   const apiUrl=`https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`;
   
 
-useEffect(()=>{
+useEffect((getRecpies)=>{
   getRecpies()
 }, [query]
 );
