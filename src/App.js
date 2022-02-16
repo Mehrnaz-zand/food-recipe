@@ -16,37 +16,47 @@ const App = ()=> {
 useEffect(()=>{
   getRecpies()
 }, [query]
-)
+);
+
 
 
 
   const getRecpies =async ()=>{
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl).catch(err=>alert(err));
     const data = await response.json();
-    
+
     if (data.more===false){
       alert("Oops! Please try again!")
     }else {
       setRecpies(data.hits)
       console.log(data)
+      
     }
    
    };
+   
     
       
+
    
    const updateSearch = e=>{
      setSearch(e.target.value);
-
    }
+   
+
    const handleSubmit = e=>{
      e.preventDefault();
     setQuery(search);
+   
    }
+ 
+
    
   return (
   <div className='App'>
+    
     <form className="search-form" onSubmit={handleSubmit}>
+      <h1 > Search a recipe!</h1>
       <input type="text" className="search-bar" 
       value = {search}
       onChange = {updateSearch}/>
@@ -55,9 +65,9 @@ useEffect(()=>{
         Search
         </button>
     </form>
-    
-    {recipes.map((recipe, index) => (
 
+    {recipes.map((recipe, index) => (
+     
       <Recipes 
       key =  {index}
       title = {recipe.recipe.label}
@@ -69,10 +79,11 @@ useEffect(()=>{
       dishType = {recipe.recipe.dishType}
       source = {recipe.recipe.source}
       />
-     
+    
     ))}
    
-    </div>
+   </div>
+ 
   
 
   

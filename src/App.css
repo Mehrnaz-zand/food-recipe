@@ -1,30 +1,62 @@
 .App {
-  margin: 50px auto;
-  max-width: 50%;
-  border: 2px ridge rgba(136, 93, 241, 0.1);
-  border-radius: 17px;
-  background-color: aquamarine;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
   padding: 50px;
+  color: rgb(7, 7, 56);
+}
+h1 {
+  font-size: 30px;
 }
 
 li {
   list-style: none;
 }
+.search-form {
+  background-color: #cdcdd7;
+  border: 1px solid rgb(7, 7, 56);
+  border-radius: 50px;
+  margin: 10px auto;
+  padding: 20px;
+  max-width: 80%;
+}
 .search-bar {
-  min-width: 50%;
-  border-radius: 10px;
+  min-width: 30%;
+  border-radius: 30px;
   border: none;
   padding: 5px 10px;
   margin: 10px;
 }
+a {
+  text-decoration: none;
+  color: rgb(168, 94, 106);
+}
+a:hover {
+  cursor: pointer;
+  color: rgb(236, 174, 184);
+}
 
 .button {
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   background-color: white;
 }
 .button:hover {
   box-shadow: 10px 10px 10px 10px rgba(136, 93, 241, 0.1);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px;
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+
+  .search-form {
+    max-width: 100%;
+  }
 }
