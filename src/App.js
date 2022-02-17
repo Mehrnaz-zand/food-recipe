@@ -1,48 +1,52 @@
 import './App.css';
-import React, { useState} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import Recipes from './Recipes';
 
 
 
 
 const App = ()=> {
- 
+
   const [recipes, setRecipes] =useState([]);
-  const [search, setSearch] = useState("mango");
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("pasta");
+  const tempQuery = useRef();
 
-  const appId="4257774f";
+  useEffect(()=>{
+ tempQuery.current();
+  }, [query]);
+
+    const appId="4257774f";
     const appKey= "5943314524ba8ccc07fb748900635678";
-    const apiUrl=`https://api.edamam.com/search?q=${search}&app_id=${appId}&app_key=${appKey}`;
-
-
+    const apiUrl=`https://api.edamam.com/search?q=${query}&app_id=${appId}&app_key=${appKey}`;
+  
 
 
   const getRecipes =async ()=>{
     const response = await fetch(apiUrl).catch(err=>alert(err));
     const data = await response.json();
-      if (data.more===false){
-      alert("Oops! Please try again!")
-    }else {
-      setRecipes(data.hits)
-      console.log(data);   
+    if (data.more===true){
+      console.log(data);
+      setRecipes(data.hits);
 
+   } else{
+     alert("Oops! Please try again!");
+   }
+  }
+  tempQuery.current= getRecipes;
 
-    }
-   };
-  
-   
    const updateSearch = e=>{
      setSearch(e.target.value);
-     
+   
    }
    
 
    const handleSubmit = e=>{
      e.preventDefault();
-    getRecipes();
-    setSearch("");
+     setQuery(search);
+     getRecipes();
+   
 
-    
    }
  
    
@@ -59,11 +63,11 @@ const App = ()=> {
       
       onChange = {updateSearch}/>
       <button type="submit" 
-      className="button" >
+      className="button"  >
         Search
         </button>
     </form>
-
+    
     {recipes.map((recipe, index) => (
      
       <Recipes 
@@ -86,5 +90,5 @@ const App = ()=> {
  
        
 
-
 export default App;
+
