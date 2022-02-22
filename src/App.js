@@ -37,7 +37,6 @@ const App = ()=> {
 
    const updateSearch = e=>{
      setSearch(e.target.value);
-   
    }
    
 
@@ -45,12 +44,8 @@ const App = ()=> {
      e.preventDefault();
      setQuery(search);
      getRecipes();
-   
-
    }
  
-   
-
   return (
   <div className='App'>
     
@@ -59,8 +54,7 @@ const App = ()=> {
       <h1 > Search a recipe!</h1>
       <input type="search" 
       className="search-bar" 
-      value = {search}
-      
+      value={search}
       onChange = {updateSearch}/>
       <button type="submit" 
       className="button"  >
@@ -81,7 +75,6 @@ const App = ()=> {
       dishType = {recipe.recipe.dishType}
       source = {recipe.recipe.source}
       />
-    
     ))}
    
    </div>
